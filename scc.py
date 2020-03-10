@@ -46,6 +46,7 @@ def take_input():
             adjacentvertices.append(int(node))
         graph.append(adjacentvertices)
     grev = [[] for _ in range(len(graph))]
+    print(graph)
     for i in range(len(graph)):
         adjacentvertices = []
         for node in graph[i]:

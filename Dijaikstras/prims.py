@@ -31,8 +31,7 @@ def prims(graph,pq):
                     vertex_list[node].dist=weight
                     vertex_list[node].path_changer = vertex[1]
                     vertex_list[node].weight = weight
-                    heapq.heappush(pq,[vertex_list[node].dist,node])
-                    
+                    heapq.heappush(pq,[vertex_list[node].dist,node])                    
             vertex_list[vertex[1]].visited=1
     print(T,sum)   
 

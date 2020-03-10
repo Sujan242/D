@@ -12,6 +12,8 @@ def kruskal(G,edge):
             print(edge[i][0][0],edge[i][0][1])
             T.add(edge[i][0])
             x.union(vertex[edge[i][0][0]],vertex[edge[i][0][1]])
+        if(len(T)==len(G)-1):
+            break
     print("final",T)
     print(T)
 
