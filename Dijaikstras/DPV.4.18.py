@@ -4,7 +4,7 @@ class Vertex:
         self.dist = float('infinity')
         self.pred = None
         self.path = ""
-        # self.flag = False
+        self.flag = False
         self.number = 0
         self.best = 0
 
@@ -28,19 +28,24 @@ def calculate_distances(graph,starting_vertex,pq):
                     heapq.heappush(pq,[vertex_list[node].dist,node])
                     vertex_list[node].pred = vertex[1]
                     vertex_list[node].number = vertex_list[vertex[1]].number+1
-                    # if(vertex_list[node].flag==True):
-                    #     vertex_list[node].flag = False
+                    vertex_list[node].path = vertex_list[node].path+str(vertex[1])+','
+                    if(vertex_list[node].flag==True):
+                        vertex_list[node].flag = False
                     vertex_list[node].path = vertex_list[vertex[1]].path+str(vertex[1])+","
                 elif(vertex_list[node].dist==vertex_list[vertex[1]].dist+weight):
-                    # vertex_list[node].flag = True
+                    vertex_list[node].flag = True
+                    print("HELLOs")
+
                     if(vertex_list[node].number>vertex_list[vertex[1]].number+1):
                         vertex_list[node].number = vertex_list[vertex[1]].number+1
+                        vertex_list[node].path = vertex_list[node].path[:7]
+                        vertex_list[node].path = vertex_list[node].path+str(vertex[1])+','
     for i in range(len(graph)):
         print("Node ",i," is at a distance of  ",vertex_list[i].dist,"from ",starting_vertex)
         vertex_list[i].path += str(i)
         print("path",vertex_list[i].path)
     for i in range(len(graph)):
-        print("best for vertex ",i,vertex_list[i].number)
+        print("best for vertex ",i,vertex_list[i].number,vertex_list[i].flag)
 
 
 

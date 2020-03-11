@@ -27,8 +27,7 @@ def calculate_distances(graph,starting_vertex,pq):
                     heapq.heappush(pq,[vertex_list[node].dist,node])
                     vertex_list[node].pred = vertex[1]
                     vertex_list[node].number = vertex_list[vertex[1]].number+1
-                    if(vertex_list[node].flag==True):
-                        vertex_list[node].flag = False
+                    vertex_list[node].flag = vertex_list[vertex[1]].flag
                     vertex_list[node].path = vertex_list[vertex[1]].path+str(vertex[1])+","
                 elif(vertex_list[node].dist==vertex_list[vertex[1]].dist+weight):
                     vertex_list[node].flag= True
@@ -49,7 +48,7 @@ def main():
     ''' Adjacency List representation. G is a list of lists. '''
     G = [] 
 
-    file=open('input.txt','r')
+    file=open('input3.txt','r')
     for line in file:
         line=line.strip()
         adjacentVertices = []
