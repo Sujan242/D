@@ -12,6 +12,7 @@ class DFS:
         self.G= []
         self.sst = 0
         self.flag=0
+        self.nuber_of_visited=0
 
     def take_input(self):
         file=open('input.txt','r')
@@ -37,6 +38,7 @@ class DFS:
         return self.v,self.s
 
     def do_dfs(self, u):
+        self.nuber_of_visited+=1
         self.visited[u]=1
         self.start[u]=self.time
         self.time = self.time+1
@@ -79,6 +81,8 @@ class DFS:
 x = DFS()
 x.take_input()
 x.do_dfs(0)
+if x.nuber_of_visited!=x.v:
+    print("Graph is not connected!")
 
 
 
